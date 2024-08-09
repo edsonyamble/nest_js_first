@@ -1,0 +1,61 @@
+schema nest js 
+module  основный стрейтилный блок преложение который гуппируют связные компонеты
+controllers  обрабатовает  http  запрос и возрашает ответ какое то 
+service выполнят бизнессс логику и совмездействие с базы данных 
+
+creer controlleur nest g controller [name] --no-spec
+creer service  nest g service [name]  --no-spec
+creere module  nest g module [name] --no-spec
+creer module servuce controller nest g resource  [name]  --no-spec
+
+midleware это функция который выполняеться перед тем что запрос достинить к контролер 
+pipe они приобразует входных данных перед их обработно в контролере 
+interceptors  позволяет менять ответ до их отправки ползователю 
+
+
+базы данных 
+prisma орм для работы с ббазы даных
+class validator  для работы с dto
+dto  data transfer object  который напишем конкретно поля  который будет приходит к нам в боди содержими 
+ npm i --save class-validator class-transformer и еще добавляем pipe validate  @UsePipes(new ValidationPipe())
+
+
+работа с env  можно с dotenv либо можно с nestjs/config
+  npm i --save @nestjs/config
+  appmodule global   imports: [ ConfigModule.forRoot({ isGlobal: true })],
+  app module flowers  providers: [ ConfigService],
+app service flowers  constructor(
+    private readonly ConfigService: ConfigService,
+  )
+  findAll() {
+    console.log(this.ConfigService.get<string>('MODE'));
+    можер еще создать в flower folder type.ts 
+export enum EnumApppMode {
+  DEV = 'developement',
+  PROD = 'production',
+  TEST = 'test',
+}
+import { EnumApppMode } from './type';
+    console.log(this.ConfigService.get<EnumApppMode>('MODE'));
+    
+работа с микросервисы 
+ npm i --save @nestjs/microservices
+в main.ts
+import { NestFactory } from '@nestjs/core';
+import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.TCP,
+    },
+  );
+  await app.listen();
+}
+bootstrap();
+
+nest g resource  microservice  --no-spec
+
+graphql  это язяк запрос для взаимодействме с апи
