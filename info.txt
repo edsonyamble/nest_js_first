@@ -59,3 +59,20 @@ bootstrap();
 nest g resource  microservice  --no-spec
 
 graphql  это язяк запрос для взаимодействме с апи
+
+database orm 
+typeorm 
+prisma 
+sequelise
+
+prisma 
+class validator dto 
+
+graphql 
+query Getflowers{
+  flowers{
+  color  
+  name}
+}
+
+shift espace автодополнение
