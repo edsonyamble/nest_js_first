@@ -20,10 +20,13 @@ export class FlowersController {
   constructor(private readonly flowersService: FlowersService) {}
 
   @Get()
-  @UseInterceptors(LoggingInterceptor)
-  @UseGuards(AuthGuard)
-  findAll(@Query('pageNumber', ParseIntPipe) pageNumber: number) {
-    console.log(pageNumber);
+  // @UseInterceptors(LoggingInterceptor)
+  // @UseGuards(AuthGuard)
+  // findAll(@Query('pageNumber', ParseIntPipe) pageNumber: number) {
+  //   console.log(pageNumber);
+  //   return this.flowersService.findAll();
+  // }
+  findAll() {
     return this.flowersService.findAll();
   }
 
