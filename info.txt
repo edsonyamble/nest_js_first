@@ -76,3 +76,12 @@ query Getflowers{
 }
 
 shift espace автодополнение
+
+websocket повает создавать постаяно седенение между клиент и сервере 
+где исползовает это где реал тайм например собшение и т д ватцап телеграм и т д 
+
+ws://localhost/4200 если не зашишеноо
+wss://localhost/4200 если зашишеноо ssl certificat 
+
+postman request type socket io   postman подержтвает а не инсомня
+http://localhost:4200
