@@ -3,21 +3,21 @@ import {
   Controller,
   Get,
   Post,
-  Query,
+  // Query,
   UsePipes,
-  UseGuards,
-  UseInterceptors,
+  // UseGuards,
+  // UseInterceptors,
   ValidationPipe,
 } from '@nestjs/common';
 import { FlowersService } from './flowers.service';
-import { ParseIntPipe } from 'src/conception/pipe';
-import { AuthGuard } from 'src/conception/guards';
-import { LoggingInterceptor } from 'src/conception/interceptor';
+// import { ParseIntPipe } from 'src/conception/pipe';
+// import { AuthGuard } from 'src/conception/guards';
+// import { LoggingInterceptor } from 'src/conception/interceptor';
 import { FlowerDto } from './flowers.dto';
 
 @Controller('flowers')
 export class FlowersController {
-  constructor(private readonly flowersService: FlowersService) {}
+  constructor(private readonly flowersService: FlowersService) { }
 
   @Get()
   // @UseInterceptors(LoggingInterceptor)
@@ -32,7 +32,7 @@ export class FlowersController {
 
   @Post()
   @UsePipes(new ValidationPipe())
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   create(@Body() dto: FlowerDto) {
     return this.flowersService.create(dto);
   }

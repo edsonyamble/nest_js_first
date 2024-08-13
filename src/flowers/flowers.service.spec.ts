@@ -11,17 +11,17 @@ describe('FlowersService', () => {
       providers: [
         FlowersService,
         {
-          provide: 'PrismaService',
+          provide: PrismaService,
           useValue: {
             flower: {
-              findMany: jest.fn().mockResolvedValue([
+              findMany: jest.fn().mockResolvedValue(
                 {
                   id: 1,
                   name: 'Rose',
                   color: 'Red',
                   price: 10,
                 },
-              ]),
+              ),
               create: jest.fn().mockResolvedValue({
                 id: 2,
                 name: 'Lily',
@@ -37,32 +37,32 @@ describe('FlowersService', () => {
 
     service = module.get<FlowersService>(FlowersService);
   });
-    it('should return an array of flowers ', async () => {
-      expect(await service.findAll()).toEqual([
-        {
-          id: 1,
-          name: 'Rose',
-          color: 'Red',
-          price: 10,
-        },
-      ]);
-    });
+  it('should return an array of flowers ', async () => {
+    expect(await service.findAll()).toEqual(
+      {
+        id: 1,
+        name: 'Rose',
+        color: 'Red',
+        price: 10,
+      },
+    );
+  });
 
-    it('should return an array of flowers ', async () => {
-      expect(
-        await service.create({
-          name: 'Lily',
-          color: 'White',
-          price: 15,
-          updateAt: null,
-        }),
-      ).toEqual([
-        {
-          id: 2,
-          name: 'Lily',
-          color: 'White',
-          price: 15,
-        },
-      ]);
-    });
+  it('should return an array of flowers ', async () => {
+    expect(
+      await service.create({
+        name: 'Lily',
+        color: 'White',
+        price: 15,
+       
+      }),
+    ).toEqual(
+      {
+        id: 2,
+        name: 'Lily',
+        color: 'White',
+        price: 15,
+      },
+    );
+  });
 });

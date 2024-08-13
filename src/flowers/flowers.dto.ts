@@ -10,8 +10,6 @@ export class FlowerDto {
   @IsNumber()
   price: number;
 
-  @IsString()
-  updateAt: any;
 }
 
 export type TFLowersUpdateDto = Partial<FlowerDto>;
