@@ -13,7 +13,6 @@ export class FlowerDto {
   @IsNumber()
   @ApiProperty({ example: 6, required: true })
   price: number;
-
 }
 
 export type TFLowersUpdateDto = Partial<FlowerDto>;
